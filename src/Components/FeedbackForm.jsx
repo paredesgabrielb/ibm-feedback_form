@@ -5,7 +5,8 @@ const FeedbackForm = () => {
     const [formData, setFormData] = useState({
         name: '',
         email: '',
-        feedback: ''
+        feedback: '',
+        rating: ''
     });
 
     const handleChange = (event) => {
@@ -22,6 +23,7 @@ const FeedbackForm = () => {
             Name: ${formData.username}
             Email: ${formData.email}
             Feedback: ${formData.feedback}
+            Rating: ${formData.rating}
         `;
         const isConfirmed = window.confirm(`Please confirm your details: \n\n ${confirmationMessage}`);
                 
@@ -30,7 +32,8 @@ const FeedbackForm = () => {
             setFormData({
                 name: '',
                 email: '',
-                feedback: ''
+                feedback: '',
+                rating:''
             });
             alert("Thanks you for your valuable feedback!");
         }
@@ -63,6 +66,17 @@ const FeedbackForm = () => {
             value={formData.feedback}
             onChange={handleChange}
             ></ textarea>
+        <div style={{display:'flex',gap:'10px',flexDirection:'column'}}>
+            <span>Rate us:</span>
+
+            <p><input type="radio" name="rating" onChange={handleChange} value="1" />1</p>
+            <p><input type="radio" name="rating" onChange={handleChange} value="2" />2</p>
+            <p><input type="radio" name="rating" onChange={handleChange} value="3" />3</p>
+            <p><input type="radio" name="rating" onChange={handleChange} value="4" />4</p>
+            <p><input type="radio" name="rating" onChange={handleChange} value="5" />5</p>
+
+        </div>
+
         <button type='submit' >Submit Feedback</button>
       </form>
     </>
