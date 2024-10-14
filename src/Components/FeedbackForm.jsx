@@ -2,6 +2,19 @@ import React, { useState } from 'react';
 import './FeedbackForm.css'; // Import CSS for styling
 
 const FeedbackForm = () => {
+    const [formData, setFormData] = useState({
+        username: '',
+        email: '',
+        feedback: ''
+    });
+
+    const handleChange = (event) => {
+        const {name, value} = event.target;
+        setFormData({
+            ...formData,
+            [name]:value
+        });
+    }
 
   return (
     <>
@@ -14,15 +27,21 @@ const FeedbackForm = () => {
         <input 
             type='text' 
             name='username'
-            placeholder='Your Name'/>
+            placeholder='Your Name'
+            value={formData.username}
+            onChange={handleChange} />
         <input 
             type='email'
             name='email' 
-            placeholder='Your Email' />
+            placeholder='Your Email' 
+            value={formData.email}
+            onChange={handleChange} />
         <textarea 
             type='text' 
             name='feedback'
             placeholder='Your Feedback' 
+            value={formData.feedback}
+            onChange={handleChange}
             ></ textarea>
         <button type='submit' >Submit Feedback</button>
       </form>
